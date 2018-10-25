@@ -16,20 +16,18 @@ public class OrderScheduler {
 
     private Time currentTimestamp;
     private Time end;
-    private int secPerUnit;
+    private int secPerUnit = 60;
     private CustomerSurveyTracker metric;
 
     /**
      * Default constructor
      * @param start the operation start time
      * @param end the operation end time
-     * @param secPerUnit drone travel time per unit in seconds
      * @param metric the satisfaction metric
      */
-    public OrderScheduler(Time start, Time end, int secPerUnit, CustomerSurveyTracker metric) {
+    public OrderScheduler(Time start, Time end, CustomerSurveyTracker metric) {
         this.currentTimestamp = start;
         this.end = end;
-        this.secPerUnit = secPerUnit;
         this.metric = metric;
     }
 
