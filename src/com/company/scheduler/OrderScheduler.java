@@ -43,10 +43,12 @@ public class OrderScheduler {
 
         while (currentTimestamp.compareTo(end) < 0 && (!orderQueue.isEmpty() || !readyQueue.isEmpty())) {
 
+            //at the start of each iteration, i;e delivering one order, reshuffle ready queue and slow queue based on new time
             if (!orderQueue.isEmpty()) {
                 readyQueue = updateQueue(readyQueue, slowQueue);
             }
 
+            //distribute orders 
             while (!orderQueue.isEmpty()) {
                 CustomerOrder order = orderQueue.peek();
 
@@ -67,6 +69,7 @@ public class OrderScheduler {
                 }
             }
 
+            //all orders delivered
             if (readyQueue.isEmpty()) {
                 if (orderQueue.isEmpty()) {
                     break;
@@ -84,11 +87,12 @@ public class OrderScheduler {
                 currentTimestamp = new Time(nextOrder.getOrderPlacedTime().getSeconds());
             }
             else {
+                //deliver order
                 CustomerOrder delivery = readyQueue.remove();
                 updateSchedulerStatus(delivery, receiptList);
             }
         }
-
+        //if any orders left in slow queue, all these contribue to detractors anyway so we just update
         while (currentTimestamp.compareTo(end) < 0 && (!slowQueue.isEmpty())) {
             CustomerOrder delivery = slowQueue.remove();
             updateSchedulerStatus(delivery, receiptList);
