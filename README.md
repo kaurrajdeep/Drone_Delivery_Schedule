@@ -16,4 +16,5 @@ Algorithm: Greedy approach w.r.t wait time for an order.
 2) First, sort the orders based on expecteddelaytime for a customer.
 3) Deliver orders with least wait time among all avilable orders.
 4) Depriortize order with more than 3.5 hours of delay time.
-5) After all orders with time less than 2.5 hours are delivered, go with remaining orders.
+5) Update time after a delivery and continue.
+6) After all orders with time less than 2.5 hours are delivered, go with remaining orders.
