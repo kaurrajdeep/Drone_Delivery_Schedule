@@ -19,7 +19,6 @@ public class Main {
     private final static Time START_TIME = new Time(6, 0, 0);
     private final static Time END_TIME = new Time(22, 0, 0);
 
-    private final static int SECOND_PER_UNIT = 60;
 
     public static void main(String[] args) {
 	// write your code here
@@ -31,14 +30,14 @@ public class Main {
             System.exit(0);
         }
         //read the input filename from command line
-        File file = new File(args[0]); //"/Users/Apple/Desktop/test_orders.txt");
+        File file = new File(args[0]);//new File(args[0]); //"");
         Queue<CustomerOrder> orderQueue = null;
         try {
 
             orderQueue = Utils.parseInputFile(file);
 
             CustomerSurveyTracker metric = new CustomerSurveyTracker(5400, 12600);
-            OrderScheduler scheduler = new OrderScheduler(START_TIME, END_TIME, SECOND_PER_UNIT, metric);
+            OrderScheduler scheduler = new OrderScheduler(START_TIME, END_TIME,metric);
 
             List<CustomerReceipt> receiptList = scheduler.generateReceipts(orderQueue);
             double nps = metric.getNPS();
