@@ -42,7 +42,7 @@ public class Main {
 
             List<CustomerReceipt> receiptList = scheduler.generateReceipts(orderQueue);
             double nps = metric.getNPS();
-            Utils.generateReceiptFile("output.txt", receiptList, nps);
+            Utils.generateReceiptFile("delivery_order.txt", receiptList, nps);
         } catch (IOException e) {
             System.out.println("Unable to parse file: " + e.getMessage());
         }
