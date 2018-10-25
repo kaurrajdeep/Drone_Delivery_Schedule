@@ -38,8 +38,7 @@ public class Utils {
 
             String[] orderInfo = currentLine.split("\\s+");
             String orderIdentifier = orderInfo[0];
-            //get direction info
-            // String[] directionInfo = orderInfo[1];//.split("[^A-Z0-9]+|(?<=[A-Z])(?=[0-9])|(?<=[0-9])(?=[A-Z])");
+
             int x = 0, y = 0;
             String northOrSouth ="N", eastOrWest="S";
             //validateLocation(orderInfo[1])else continue;
