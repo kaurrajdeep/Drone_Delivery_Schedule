@@ -42,7 +42,7 @@ public class Utils {
             // String[] directionInfo = orderInfo[1];//.split("[^A-Z0-9]+|(?<=[A-Z])(?=[0-9])|(?<=[0-9])(?=[A-Z])");
             int x = 0, y = 0;
             String northOrSouth ="N", eastOrWest="S";
-
+            //validateLocation(orderInfo[1])else continue;
             if (orderInfo[1].charAt(0) =='N'|| orderInfo[1].charAt(0) =='S') {
                 northOrSouth = Character.toString(orderInfo[1].charAt(0));
                 int secondDirection = orderInfo[1].indexOf("E");
@@ -53,16 +53,16 @@ public class Utils {
                 y = Integer.parseInt(orderInfo[1].substring(secondDirection+1));
             }
 
-            CustomerLocation direction = new CustomerLocation(x, y, northOrSouth, eastOrWest);
+            CustomerLocation location = new CustomerLocation(x, y, northOrSouth, eastOrWest);
 
             String[] timeInfo = orderInfo[2].split(":");
             int hour = Integer.parseInt(timeInfo[0]);
             int minute = Integer.parseInt(timeInfo[1]);
             int second = Integer.parseInt(timeInfo[2]);
-
+            //validateTime(timeInfo) else continue;
             Time timestamp = new Time(hour, minute, second);
 
-            CustomerOrder order = new CustomerOrder(orderIdentifier, direction, timestamp);
+            CustomerOrder order = new CustomerOrder(orderIdentifier, location, timestamp);
             orderList.add(order);
         }
 
